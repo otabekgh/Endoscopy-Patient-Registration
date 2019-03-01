@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content_list %}
 
-</body>
-</html>
+<div class="col-12">
+
+<div style="display: flex; flex-direction: column; margin: 20px;" class="col-6">
+    <p class="h3">
+        {% if request.path == '/templates/device/new' %} Add New Device {% else %} Edit - {% endif %}
+        {% if request.path != '/templates/device/edit' %}<small>{{ device.name }}</small>{% endif %}
+    </p>
+    <br>
+    <form method="post"> {% csrf_token %}
+
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+        <input type="submit" class="btn btn-outline-primary" {% if request.path == '/templates/device/new' %} value="Add new" {% else %} value="Update" {% endif %}>
+    </form>
+</div>
+
+</div>
+
+
+{% endblock %}
