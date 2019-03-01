@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content_list %}
+
+<div class="col-12">
+
+<div style="display: flex; justify-content: space-between; margin: 20px;">
+<p class="h3"> Device list </p>
+<a href="" class="btn btn-outline-primary"> Add new </a>
+</div>
+
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" class="text-center">№</th>
+          <th scope="col">Title</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for instance in object_list %}
+        <tr>
+             <td class="text-center">{{ instance.id }}</td>
+             <td> <a href='{{ instance.get_absolute_url }}'>{{ instance.name }}</a> </td>
+             <td style="text-align: center; width: 10%;"> <a href="{{ instance.get_update_url }} "><i class="material-icons">&#xE254;</i></a> </td>
+             <td style="text-align: center; width: 10%;"> <a href="{{ instance.get_delete_url }}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

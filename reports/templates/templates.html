@@ -3,29 +3,35 @@
 
 <div class="col-4">
 
-    <form class="form-inline">
-      <div class="form-group mb-2">
-        <input type="text" class="form-control">
-      </div>
-      <button type="submit" class="btn btn-outline-primary mb-2">Add</button>
+    <form action="post"> {% csrf_token %}
+        <div class="input-group">
+            {{ form.as_p }}
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-outline-primary" value="Save">
+          </span>
+        </div>
     </form>
-
     <table class="table">
       <thead>
         <tr>
           <th scope="col">№</th>
-          <th scope="col">Device</th>
+          <th scope="col">Title</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-      {% for device in device_list %}
+    {% for instance in object_list %}
         <tr>
-          <th scope="row"> {{ device.id }} </th>
-          <td>{{ device_name }}</td>
+             <td>{{ instance.id }}</td>
+             <td> <a href='{{ instance.get_absolute_url }}'>{{ instance.name }}</a> </td>
+             <td> <a href="{{ instance.get_update_url }} "><i class="material-icons">&#xE254;</i></a> </td>
+             <td> <a href="{{ instance.get_delete_url }}"><i class="material-icons">&#xE872;</i></a> </td>
         </tr>
-      {% endfor %}
+    {% endfor %}
       </tbody>
     </table>
+
 </div>
 
 
