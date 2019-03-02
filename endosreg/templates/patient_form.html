@@ -11,9 +11,10 @@
     <br>
     <form method="post"> {% csrf_token %}
 
-                    <div class="form-group">
-                        {{ form.as_p }}
-                    </div>
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
         <input type="submit" class="btn btn-outline-primary" {% if request.path == '/registration/patient/new' %} value="Add new" {% else %} value="Update" {% endif %}>
     </form>
 

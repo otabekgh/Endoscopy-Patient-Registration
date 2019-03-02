@@ -7,6 +7,8 @@ class EndosPatient(models.Model):
     id_number   = models.CharField(max_length=9, blank=True)
     anesthesia  = models.CharField(max_length=250)
     diagnosis   = models.TextField(blank=False, null=True)
+    def __str__(self):
+        return self.name
 
 class EndosImage(models.Model):
     patient = models.ForeignKey(EndosPatient, on_delete= models.CASCADE)
