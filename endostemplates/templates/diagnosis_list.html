@@ -2,15 +2,10 @@
 {% block content_list %}
 
 <div class="col-12">
+
 <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-    <p class="h3">
-
-    {% if request.path == '/templates/device' %}  Device list
-    {% elif request.path == '/templates/anesthesia' %} Anesthesia list
-    {% endif %}
-
-    </p>
-    <a href="device/new" class="btn btn-outline-primary"> Add new </a>
+    <p class="h3"> Template of Diagnosis List </p>
+    <a href="templatediagnosis/new" class="btn btn-outline-primary"> Add new </a>
 </div>
 
 <nav aria-label="Page navigation example">
@@ -26,6 +21,7 @@
         <tr>
           <th scope="col" class="text-center">№</th>
           <th scope="col">Title</th>
+          <th scope="col">Description</th>
           <th></th>
           <th></th>
         </tr>
@@ -33,15 +29,15 @@
       <tbody>
     {% for instance in object_list %}
         <tr>
-             <td class="text-center" style="width: 12%;">{{ forloop.counter0|add:page_obj.start_index }}</td>
-             <td> <a href='{{ request.path }}/update/{{ instance.id }}'>{{ instance.name }}</a> </td>
-             <td style="text-align: center; width: 10%;"> <a href="{{ request.path }}/update/{{ instance.id }}"><i class="material-icons">&#xE254;</i></a> </td>
-             <td style="text-align: center; width: 10%;"> <a href="{{ request.path }}/delete/{{ instance.id }}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
+             <td class="text-center" style="width: 5%;">{{ forloop.counter0|add:page_obj.start_index }}</td>
+             <td> <a href='{{ request.path }}/update/{{ instance.id }}'>{{ instance.title }}</a> </td>
+             <td style="font-size: 14px;"> {{ instance.diagnosis }} </td>
+             <td style="text-align: center; width: 5%;"> <a href="{{ request.path }}/update/{{ instance.id }}"><i class="material-icons">&#xE254;</i></a> </td>
+             <td style="text-align: center; width: 5%;"> <a href="{{ request.path }}/delete/{{ instance.id }}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
         </tr>
     {% endfor %}
       </tbody>
     </table>
-
 
 {% if is_paginated %}
 <nav aria-label="Page navigation example">
@@ -51,13 +47,13 @@
                to the URL. -->
           {% if not search %}
           <li class="page-item">
-              <a class="page-link" href="/templates/device?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+              <a class="page-link" href="/templates/templatediagnosis?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
           </li>
           {% else %}
           <!-- Append the searched query to the URL, so that on a search results page,
                the pagination don't revert to listing all the listview items. -->
             <li class="page-item">
-              <a class="page-link" href="/templates/device?{{search}}&page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+              <a class="page-link" href="/templates/templatediagnosis?{{search}}&page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
           </li>
           {% endif %}
         {% else %}
@@ -66,16 +62,16 @@
         </li>
         {% endif %}
         {% for object in page_obj.paginator.page_range %}
-            <li class="page-item"><a class="page-link" href="/templates/device?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            <li class="page-item"><a class="page-link" href="/templates/templatediagnosis?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
         {% endfor %}
         {% if page_obj.has_next %}
           {% if not search %}
           <li class="page-item">
-              <a class="page-link" href="/templates/device?page={{ page_obj.next_page_number }}">Next</a>
+              <a class="page-link" href="/templates/templatediagnosis?page={{ page_obj.next_page_number }}">Next</a>
           </li>
           {% else %}
             <li class="page-item">
-              <a class="page-link" href="/templates/device?{{search}}&page={{ page_obj.next_page_number }}">Next</a>
+              <a class="page-link" href="/templates/templatediagnosis?{{search}}&page={{ page_obj.next_page_number }}">Next</a>
           </li>
           {% endif %}
         {% else %}
@@ -86,6 +82,7 @@
     </ul>
 </nav>
 {% endif %}
+
 
 </div>
 

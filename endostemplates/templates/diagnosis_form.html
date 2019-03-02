@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content_list %}
+
+<div class="col-12">
+
+<div style="display: flex; flex-direction: column; margin: 20px;" class="col-12">
+    <p class="h3">
+        {% if request.path == '/templates/templatediagnosis/new' %} Add New Template of Diagnosis {% else %} Edit - {% endif %}
+        {% if request.path != '/templates/templatediagnosis/edit' %}<small>{{ object.title }}</small>{% endif %}
+    </p>
+    <br>
+    <form method="post"> {% csrf_token %}
+
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+        <input type="submit" class="btn btn-outline-primary" {% if request.path == '/templates/templatediagnosis/new' %} value="Add new" {% else %} value="Update" {% endif %}>
+    </form>
+</div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content_list %}
+
+<div class="col-12">
+
+<div style="display: flex; flex-direction: column; margin: 20px;" class="col-6">
+    <p class="h3">
+        {% if request.path == '/templates/anesthesia/new' %} Add New Anesthesia Method {% else %} Edit - {% endif %}
+        {% if request.path != '/templates/anesthesia/edit' %}<small>{{ anesthesia.name }}</small>{% endif %}
+    </p>
+    <br>
+    <form method="post"> {% csrf_token %}
+
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+        <input type="submit" class="btn btn-outline-primary" {% if request.path == '/templates/anesthesia/new' %} value="Add new" {% else %} value="Update" {% endif %}>
+    </form>
+</div>
+
+</div>
+
+
+{% endblock %}

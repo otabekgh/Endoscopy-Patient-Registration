@@ -2,15 +2,10 @@
 {% block content_list %}
 
 <div class="col-12">
+
 <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-    <p class="h3">
-
-    {% if request.path == '/templates/device' %}  Device list
-    {% elif request.path == '/templates/anesthesia' %} Anesthesia list
-    {% endif %}
-
-    </p>
-    <a href="device/new" class="btn btn-outline-primary"> Add new </a>
+    <p class="h3">Anesthesia list</p>
+    <a href="anesthesia/new" class="btn btn-outline-primary"> Add new </a>
 </div>
 
 <nav aria-label="Page navigation example">
@@ -42,7 +37,6 @@
       </tbody>
     </table>
 
-
 {% if is_paginated %}
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center pagination">
@@ -51,13 +45,13 @@
                to the URL. -->
           {% if not search %}
           <li class="page-item">
-              <a class="page-link" href="/templates/device?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+              <a class="page-link" href="/templates/anesthesia?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
           </li>
           {% else %}
           <!-- Append the searched query to the URL, so that on a search results page,
                the pagination don't revert to listing all the listview items. -->
             <li class="page-item">
-              <a class="page-link" href="/templates/device?{{search}}&page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+              <a class="page-link" href="/templates/anesthesia?{{search}}&page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
           </li>
           {% endif %}
         {% else %}
@@ -66,16 +60,16 @@
         </li>
         {% endif %}
         {% for object in page_obj.paginator.page_range %}
-            <li class="page-item"><a class="page-link" href="/templates/device?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            <li class="page-item"><a class="page-link" href="/templates/anesthesia?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
         {% endfor %}
         {% if page_obj.has_next %}
           {% if not search %}
           <li class="page-item">
-              <a class="page-link" href="/templates/device?page={{ page_obj.next_page_number }}">Next</a>
+              <a class="page-link" href="/templates/anesthesia?page={{ page_obj.next_page_number }}">Next</a>
           </li>
           {% else %}
             <li class="page-item">
-              <a class="page-link" href="/templates/device?{{search}}&page={{ page_obj.next_page_number }}">Next</a>
+              <a class="page-link" href="/templates/anesthesia?{{search}}&page={{ page_obj.next_page_number }}">Next</a>
           </li>
           {% endif %}
         {% else %}

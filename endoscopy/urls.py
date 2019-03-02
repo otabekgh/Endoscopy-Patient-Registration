@@ -19,6 +19,6 @@ from reports.views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view),
+    path('', home_view, name='homepage'),
     path('templates/', include('endostemplates.urls')),
 ]
