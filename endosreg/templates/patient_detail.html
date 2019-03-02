@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content_list %}
+
+<div style="display: flex; justify-content: space-between; margin: 20px;">
+    <p class="h3">Patient Information </p>
+</div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-sm">
+              <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td> {{ object.name }}</td>
+                    </tr>
+
+                    <tr>
+                        <td> Date Birth </td>
+                        <td> {{ object.date_birth }}</td>
+                    </tr>
+
+                    <tr>
+                        <td> ID Number </td>
+                        <td> {{ object.id_number }}</td>
+                    </tr>
+                    <tr>
+                        <td> Anesthesia </td>
+                        <td> {{ object.anesthesia }}</td>
+                    </tr>
+                    <tr>
+                        <td> Diagnosis </td>
+                        <td width="90%"> {{ object.diagnosis }}</td>
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+
+        {% for image in images %}
+        <img width="350px" height="250px" src="{% url 'homepage' %}{{ image.url }}" alt="">
+        {% endfor %}
+    
+    </div>
+
+{% endblock %}
