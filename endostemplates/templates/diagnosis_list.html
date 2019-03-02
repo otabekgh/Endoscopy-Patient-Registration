@@ -5,7 +5,7 @@
 
 <div style="display: flex; justify-content: space-between; margin-top: 10px;">
     <p class="h3"> Template of Diagnosis List </p>
-    <a href="templatediagnosis/new" class="btn btn-outline-primary"> Add new </a>
+    <a href="{% url 'endostemplates:diagnosistemplate_new' %}" class="btn btn-outline-primary"> Add new </a>
 </div>
 
 <nav aria-label="Page navigation example">
@@ -30,10 +30,10 @@
     {% for instance in object_list %}
         <tr>
              <td class="text-center" style="width: 5%;">{{ forloop.counter0|add:page_obj.start_index }}</td>
-             <td> <a href='{{ request.path }}/update/{{ instance.id }}'>{{ instance.title }}</a> </td>
+             <td> <a href='{% url 'endostemplates:diagnosistemplate_update' instance.id %}'>{{ instance.title }}</a> </td>
              <td style="font-size: 14px;"> {{ instance.diagnosis }} </td>
-             <td style="text-align: center; width: 5%;"> <a href="{{ request.path }}/update/{{ instance.id }}"><i class="material-icons">&#xE254;</i></a> </td>
-             <td style="text-align: center; width: 5%;"> <a href="{{ request.path }}/delete/{{ instance.id }}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
+             <td style="text-align: center; width: 5%;"> <a href="{% url 'endostemplates:diagnosistemplate_update' instance.id %}"><i class="material-icons">&#xE254;</i></a> </td>
+             <td style="text-align: center; width: 5%;"> <a href="{% url 'endostemplates:diagnosistemplate_delete' instance.id %}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
         </tr>
     {% endfor %}
       </tbody>
@@ -47,13 +47,13 @@
                to the URL. -->
           {% if not search %}
           <li class="page-item">
-              <a class="page-link" href="/templates/templatediagnosis?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+              <a class="page-link" href="{% url 'endostemplates:diagnosistemplate_page' %}?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
           </li>
           {% else %}
           <!-- Append the searched query to the URL, so that on a search results page,
                the pagination don't revert to listing all the listview items. -->
             <li class="page-item">
-              <a class="page-link" href="/templates/templatediagnosis?{{search}}&page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+              <a class="page-link" href="{% url 'endostemplates:diagnosistemplate_page' %}?{{search}}&page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
           </li>
           {% endif %}
         {% else %}
@@ -62,16 +62,16 @@
         </li>
         {% endif %}
         {% for object in page_obj.paginator.page_range %}
-            <li class="page-item"><a class="page-link" href="/templates/templatediagnosis?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'endostemplates:diagnosistemplate_page' %}?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
         {% endfor %}
         {% if page_obj.has_next %}
           {% if not search %}
           <li class="page-item">
-              <a class="page-link" href="/templates/templatediagnosis?page={{ page_obj.next_page_number }}">Next</a>
+              <a class="page-link" href="{% url 'endostemplates:diagnosistemplate_page' %}?page={{ page_obj.next_page_number }}">Next</a>
           </li>
           {% else %}
             <li class="page-item">
-              <a class="page-link" href="/templates/templatediagnosis?{{search}}&page={{ page_obj.next_page_number }}">Next</a>
+              <a class="page-link" href="{% url 'endostemplates:diagnosistemplate_page' %}?{{search}}&page={{ page_obj.next_page_number }}">Next</a>
           </li>
           {% endif %}
         {% else %}

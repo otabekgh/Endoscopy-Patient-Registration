@@ -13,8 +13,8 @@ urlpatterns = [
     path('anesthesia/update/<int:pk>', views.AnesthesiaUpdate.as_view(), name='anesthesia_update'),
     path('anesthesia/delete/<int:pk>', views.AnesthesiaDelete.as_view(), name='anesthesia_delete'),
 
-    path('templatediagnosis', views.TemplateDiagnosisView.as_view(), name='diagnosistemplate_page'),
-    path('templatediagnosis/new', views.TemplateDiagnosisCreate.as_view(), name='diagnosistemplate_new'),
-    path('templatediagnosis/update/<int:pk>', views.TemplateDiagnosisUpdate.as_view(), name='diagnosistemplate_update'),
-    path('templatediagnosis/delete/<int:pk>', views.TemplateDiagnosisDelete.as_view(), name='diagnosistemplate_delete'),
+    path('diagnosistemplate', views.TemplateDiagnosisView.as_view(), name='diagnosistemplate_page'),
+    path('diagnosistemplate/new', views.TemplateDiagnosisCreate.as_view(), name='diagnosistemplate_new'),
+    path('diagnosistemplate/update/<int:pk>', views.TemplateDiagnosisUpdate.as_view(), name='diagnosistemplate_update'),
+    path('diagnosistemplate/delete/<int:pk>', views.TemplateDiagnosisDelete.as_view(), name='diagnosistemplate_delete'),
 ]
