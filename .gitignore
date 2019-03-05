@@ -1,6 +1,7 @@
 # Misc related to npm and webpack
-static/media
-.idea
+static/media/
+.idea/
+static/
 
 # OS generated files #
 ######################
