@@ -11,7 +11,7 @@ class DeviceView(generic.ListView):
     model = Device
     paginate_by = 10
     def get_queryset(self):
-        return Device.objects.all()
+        return Device.objects.all().order_by("-pk")
 
 class DeviceCreate(CreateView):
     template_name = 'endostemplates/templates/device_form.html'
@@ -36,7 +36,7 @@ class AnesthesiaView(generic.ListView):
     template_name = 'anesthesia_list.html'
     paginate_by = 10
     def get_queryset(self):
-        return Anesthesia.objects.all()
+        return Anesthesia.objects.all().order_by("-pk")
 
 class AnesthesiaCreate(CreateView):
     template_name = 'endostemplates/templates/anesthesia_form.html'
@@ -60,7 +60,7 @@ class TemplateDiagnosisView(generic.ListView):
     template_name = 'diagnosis_list.html'
     paginate_by = 5
     def get_queryset(self):
-        return TemplateDiagnosis.objects.all()
+        return TemplateDiagnosis.objects.all().order_by("-pk")
 
 class TemplateDiagnosisCreate(CreateView):
     template_name = 'endostemplates/templates/diagnosis_form.html'

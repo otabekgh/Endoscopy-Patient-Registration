@@ -45,7 +45,7 @@
              <td> {{ instance.diagnosis_date|date:'M. j, y, G:i' }}</td>
             {% endtimezone %}
 
-             <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_view' instance.id %}"><i class="material-icons">search</i></a> </td>
+             <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_view' instance.id %}" target="_blank"><i class="material-icons">search</i></a> </td>
              <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:image_page' instance.id %}"><i class="material-icons">add_a_photo</i></a> </td>
              <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_update' instance.id %}"><i class="material-icons">&#xE254;</i></a> </td>
              <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_delete' instance.id %}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
