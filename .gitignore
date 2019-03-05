@@ -1,0 +1,13 @@
+# Misc related to npm and webpack
+static/media
+.idea
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
