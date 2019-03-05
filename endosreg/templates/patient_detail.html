@@ -13,7 +13,6 @@
                         <td>Name</td>
                         <td> {{ object.name }}</td>
                     </tr>
-
                     <tr>
                         <td> Date Birth </td>
                         <td> {{ object.date_birth }}</td>
@@ -31,14 +30,22 @@
                         <td> Diagnosis </td>
                         <td width="90%"> {{ object.diagnosis }}</td>
                     </tr>
+                    <tr>
+                        <td> Diagnosis Date </td>
+                             {% load tz %}
+                             {% timezone 'Asia/Tashkent' %}
+                                <td width="90%"> {{ object.diagnosis_date }}</td>
+                            {% endtimezone %}
+                    </tr>
+                      {% for image in images %}
+                        <tr>
+                            <td> <img width="350px" height="250px" src="{% url 'homepage' %}{{ image.url }}" alt=""> </td>
+                            <td> {{ image.description }} </td>
+                        </tr>
+                      {% endfor %}
               </tbody>
             </table>
         </div>
-
-        {% for image in images %}
-        <img width="350px" height="250px" src="{% url 'homepage' %}{{ image.url }}" alt="">
-        {% endfor %}
-    
     </div>
 
 {% endblock %}

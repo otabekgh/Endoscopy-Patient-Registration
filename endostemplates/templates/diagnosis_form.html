@@ -5,8 +5,8 @@
 
 <div style="display: flex; flex-direction: column; margin: 20px;" class="col-12">
     <p class="h3">
-        {% if request.path == '/templates/templatediagnosis/new' %} Add New Template of Diagnosis {% else %} Edit - {% endif %}
-        {% if request.path != '/templates/templatediagnosis/edit' %}<small>{{ object.title }}</small>{% endif %}
+        {% if request.path == '/templates/diagnosistemplate/new' %} Add New Template of Diagnosis {% else %} Edit - {% endif %}
+        {% if request.path != '/templates/diagnosistemplate/edit' %}<small>{{ object.title }}</small>{% endif %}
     </p>
     <br>
     <form method="post"> {% csrf_token %}

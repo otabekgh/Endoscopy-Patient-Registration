@@ -1,8 +1,8 @@
 #from django.shortcuts import render
 from django.views import generic
 from .models import EndosPatient, EndosImage
-from django.urls import reverse_lazy
-from endosreg.forms import PatientRegForm
+from django.urls import reverse_lazy, reverse
+from endosreg.forms import PatientRegForm, PatientImageForm
 # Create your views here.
 
 class PatientList(generic.ListView):
@@ -10,7 +10,7 @@ class PatientList(generic.ListView):
     model = EndosPatient
     paginate_by = 10
     def get_queryset(self):
-        return EndosPatient.objects.all()
+        return EndosPatient.objects.all().order_by("-pk")
 
 class PatientView(generic.DetailView):
     template_name = 'patient_detail.html'
@@ -37,4 +37,22 @@ class PatientUpdate(generic.UpdateView):
 class PatientDelete(generic.DeleteView):
     template_name = 'patient_delete.html'
     model = EndosPatient
+    success_url = reverse_lazy('endosreg:patient_page')
+
+
+class ImageList(generic.ListView):
+    template_name = 'image_list.html'
+    model = EndosImage
+    def get_queryset(self):
+        return EndosImage.objects.filter(patient=self.kwargs.get('pk'))
+
+class ImageCreate(generic.CreateView):
+    template_name = 'image_form.html'
+    model = EndosImage
+    form_class = PatientImageForm
+    success_url = reverse_lazy('endosreg:patient_page')
+
+class ImageDelete(generic.DeleteView):
+    template_name = 'image_delete.html'
+    model = EndosImage
     success_url = reverse_lazy('endosreg:patient_page')

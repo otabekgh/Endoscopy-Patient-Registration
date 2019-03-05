@@ -4,7 +4,9 @@
 <div class="col-12">
 <div style="display: flex; justify-content: space-between; margin-top: 10px;">
     <p class="h3">Patients list</p>
-    <a href="{% url 'endosreg:patient_new' %}" class="btn btn-outline-primary"> Add new </a>
+    <div>
+        <a href="{% url 'endosreg:patient_new' %}" class="btn btn-outline-primary"> Add patient </a>
+    </div>
 </div>
 
 <nav aria-label="Page navigation example">
@@ -22,7 +24,9 @@
           <th scope="col">Patient</th>
           <th scope="col">Date Birth</th>
           <th scope="col">ID num</th>
+          <th scope="col">Diagnosis Date</th>
 
+          <th></th>
           <th></th>
           <th></th>
           <th></th>
@@ -36,8 +40,13 @@
              <td> {{ instance.name }}</td>
              <td> {{ instance.date_birth }}</td>
              <td> {{ instance.id_number }}</td>
+            {% load tz %}
+            {% timezone 'Asia/Tashkent' %}
+             <td> {{ instance.diagnosis_date|date:'M. j, y, G:i' }}</td>
+            {% endtimezone %}
 
              <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_view' instance.id %}"><i class="material-icons">search</i></a> </td>
+             <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:image_page' instance.id %}"><i class="material-icons">add_a_photo</i></a> </td>
              <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_update' instance.id %}"><i class="material-icons">&#xE254;</i></a> </td>
              <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:patient_delete' instance.id %}" style="color: darkred"><i class="material-icons">&#xE872;</i></a> </td>
         </tr>

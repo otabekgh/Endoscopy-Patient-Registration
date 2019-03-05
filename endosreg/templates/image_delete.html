@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content_list %}
+
+<h1 class="my-4">Delete -
+        <small> Image </small>
+    </h1>
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+                {% csrf_token %}
+                <div class="alert alert-info" role="alert">
+                    Are you sure to delete image ?
+                    <p> <img style="height: 200px" src="{% url 'homepage' %}{{ object.url }}"> </p>
+                </div>
+                <input type="submit" class="btn btn-outline-danger" value="Yes, delete it" />
+                <a class="btn btn-outline-info" href="{% url 'endosreg:patient_page' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content_list %}
+
+<div class="col-12">
+<div style="display: flex; justify-content: space-between; margin-top: 10px;">
+    <p class="h3">Images list</p>
+    <div>
+        <a href="{% url 'endosreg:image_new' %}" class="btn btn-outline-primary"> Add Image </a>
+    </div>
+</div>
+    <hr>
+
+<div class="d-flex flex-row flex-wrap">
+{% for instance in object_list %}
+        <div class="card mr-4 mb-4" style="width: 300px;">
+            <a href="{% url 'homepage' %}{{ instance.url }}" style="cursor: zoom-in;" target="_blank">
+                <img src="{% url 'homepage' %}{{ instance.url }}" class="card-img-top">
+            </a>
+          <div class="card-body">
+{#            <h5 class="card-title">Description</h5>#}
+            <p class="card-text"> {{ instance.description }} </p>
+          </div>
+        <div class="text-right align-text-bottom">
+            <td style="text-align: center; width: 5%;"> <a href="{% url 'endosreg:image_delete' instance.id %}" ><i class="material-icons">&#xE872;</i></a> </td>
+        </div>
+        </div>
+{% endfor %}
+</div>
+
+
+</div>
+
+{% endblock %}

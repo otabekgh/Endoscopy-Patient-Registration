@@ -3,16 +3,45 @@
 
 <div class="col-12">
 
-<div style="display: flex; flex-direction: column; margin: 20px;" class="col-6">
+<div style="display: flex; flex-direction: column; margin: 20px;" class="col-12">
     <p class="h3">
-        {% if request.path == '/registration/patient/new' %} Add New Patient {% else %} Edit - {% endif %}
-        {% if request.path != '/registration/patient/edit' %}<small>{{ patient.name }}</small>{% endif %}
+        {% if request.path == '/registration/patient/new' %} Add Patient {% else %} Edit - {% endif %}
+        {% if request.path != '/registration/patient/edit' %}<small>{{ object.name }}</small>{% endif %}
     </p>
     <br>
     <form method="post"> {% csrf_token %}
 
         <div class="form-group">
-            {{ form.as_p }}
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="">{{ form.name.label }}</label>
+                    {{ form.name }}
+                </div>
+                <div class="col-6">
+                    <label for="">{{ form.date_birth.label }} </label>
+                    {{ form.date_birth }}
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label for="">{{ form.id_number.label }}</label>
+                    {{ form.id_number }}
+                </div>
+                <div class="col-6">
+                    <label for="">{{ form.anesthesia.label }} </label>
+                    {{ form.anesthesia }}
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <label for=""> {{ form.diagnosis.label }} </label>
+                    {{ form.diagnosis }}
+                </div>
+            </div>
+
         </div>
 
         <input type="submit" class="btn btn-outline-primary" {% if request.path == '/registration/patient/new' %} value="Add new" {% else %} value="Update" {% endif %}>
