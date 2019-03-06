@@ -17,4 +17,4 @@ class EndosPatient(models.Model):
 class EndosImage(models.Model):
     patient = models.ForeignKey(EndosPatient, on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
-    url = models.ImageField(upload_to='static/media/patients')
+    url = models.ImageField(upload_to='static/patients')
