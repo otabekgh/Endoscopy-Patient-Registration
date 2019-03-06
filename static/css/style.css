@@ -2,7 +2,6 @@
     DEMO STYLE
 */
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Roboto', sans-serif;
     background: #fafafa;
@@ -64,10 +63,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-#sidebar.active {
-    margin-left: -250px;
-}
-
 #sidebar .sidebar-header {
     padding: 20px;
     background: #6d7fcc;
@@ -102,14 +97,6 @@ a[aria-expanded="true"] {
 
 a[data-toggle="collapse"] {
     position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
 }
 
 ul ul a {
@@ -155,15 +142,3 @@ a.article:hover {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
-}

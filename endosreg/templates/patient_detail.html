@@ -1,12 +1,6 @@
 {% extends 'without_menu.html' %}
 {% block content_list %}
 
-    <style>
-        p {
-            font-size: 20px;
-        }
-    </style>
-
     <div class="container-fluid">
 
         <div class="col-12 m-4">
@@ -37,7 +31,7 @@
                        <td class="text-center"> <img width="400px" height="400px" src="{% url 'homepage' %}{{ image.url }}" alt=""> </td>
                     </tr>
                     <tr>
-                        <td class="text-center" style="font-size: 14px"> {{ image.description }} </td>
+                        <td class="text-center"> {{ image.description }} </td>
                     </tr>
                 </table>
             {% endfor %}
