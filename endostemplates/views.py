@@ -1,10 +1,14 @@
-#from django.shortcuts import render
+from django.shortcuts import render
 from django.views import generic
 from .models import Device, Anesthesia, TemplateDiagnosis
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from endostemplates.forms import DeviceForm, AnesthesiaForm, TemplateDiagnosisForm
 from django.urls import reverse_lazy
 # Create your views here.
+
+def home_view(request, *args, **kwargs):
+    return render(request, 'templates/base.html', {})
+
 
 class DeviceView(generic.ListView):
     template_name = 'device_list.html'

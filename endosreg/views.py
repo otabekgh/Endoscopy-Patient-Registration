@@ -56,3 +56,10 @@ class ImageDelete(generic.DeleteView):
     template_name = 'image_delete.html'
     model = EndosImage
     success_url = reverse_lazy('endosreg:patient_page')
+
+
+class MediaList(generic.ListView):
+    template_name = 'image_list.html'
+    model = EndosImage
+    def get_queryset(self):
+        return EndosImage.objects.all()
