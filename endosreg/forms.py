@@ -23,7 +23,7 @@ class PatientRegForm(forms.ModelForm):
 
         self.fields['diagnosis'].widget.attrs = {
             'class': 'form-control',
-            'rows': 5
+            'rows': 8
         }
 
     class Meta:

@@ -1,6 +1,14 @@
 {% extends 'without_menu.html' %}
 {% block content_list %}
 
+    <style>
+        td {
+            border: 1px solid gray !important;
+            font-size: 20px;
+            line-height: 26px;
+        }
+    </style>
+
     <div class="container-fluid">
 
         <div class="col-12 m-4">
@@ -28,7 +36,7 @@
             {% for image in images %}
                 <table class="table-sm table-bordered col-6">
                     <tr>
-                       <td class="text-center"> <img width="400px" height="400px" src="{% url 'homepage' %}{{ image.url }}" alt=""> </td>
+                       <td class="text-center"> <img width="380px" height="380px" src="{% url 'homepage' %}{{ image.url }}" alt=""> </td>
                     </tr>
                     <tr>
                         <td class="text-center"> {{ image.description }} </td>

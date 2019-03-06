@@ -6,7 +6,7 @@
 <div style="display: flex; flex-direction: column; margin: 20px;" class="col-12">
     <p class="h3">
         {% if request.path == '/registration/patient/new' %} Add Patient {% else %} Edit - {% endif %}
-        {% if request.path != '/registration/patient/edit' %}<small>{{ object.name }}</small>{% endif %}
+        {% if request.path != '/registration/patient/update' %}<small>{{ object.name }}</small>{% endif %}
     </p>
     <br>
     <form method="post"> {% csrf_token %}

@@ -52,6 +52,12 @@ class ImageCreate(generic.CreateView):
     form_class = PatientImageForm
     success_url = reverse_lazy('endosreg:patient_page')
 
+class ImageUpdate(generic.UpdateView):
+    template_name = 'image_form.html'
+    model = EndosImage
+    form_class = PatientImageForm
+    success_url = reverse_lazy('endosreg:patient_page')
+
 class ImageDelete(generic.DeleteView):
     template_name = 'image_delete.html'
     model = EndosImage
