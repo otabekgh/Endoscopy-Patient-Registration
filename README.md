@@ -1,4 +1,4 @@
-# Endoscopy_Patient_Reg_Django
+# Endoscopy Patient Registration System
 
 Django Python web framework
 Bootstrap
